@@ -17,7 +17,7 @@
         "execute": {
            "inArguments":[],
           "outArguments": [],
-          "url": "https://<your-domain-here>/journeybuilder/execute",
+          "url": "https://palma-ca-test.herokuapp.com/journeybuilder/execute",
            "verb": "POST",
             "body": "",
             "header": "",
@@ -27,23 +27,24 @@
         }
     },
     "configurationArguments": {
+      "applicationExtensionKey" : "f40a0200-30a2-4786-bb2c-9f05e05762f3",
       "save": {
-        "url": "https://<your-domain-here>/journeybuilder/save",
+        "url": "https://palma-ca-test.herokuapp.com/journeybuilder/save",
           "verb": "POST",
         "useJwt": true
        },
        "publish": {
-        "url": "https://<your-domain-here>/journeybuilder/publish",
+        "url": "https://palma-ca-test.herokuapp.com/journeybuilder/publish",
            "verb": "POST",
         "useJwt": true
        },
       "stop": {
-        "url": "https://<your-domain-here>/journeybuilder/stop",
+        "url": "https://palma-ca-test.herokuapp.com/journeybuilder/stop",
            "verb": "POST",
         "useJwt": true
       },
       "validate": {
-        "url": "https://<your-domain-here>/journeybuilder/validate",
+        "url": "https://palma-ca-test.herokuapp.com/journeybuilder/validate",
         "verb": "POST",
         "useJwt": true
       }
