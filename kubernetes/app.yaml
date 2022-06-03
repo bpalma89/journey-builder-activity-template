@@ -1,7 +1,7 @@
 #runtime: custom
 #env: flex
 
-runtime: nodejs10
+runtime: nodejs
 env_variables:
   DB_USER: "root"
   DB_NAME: "database"
