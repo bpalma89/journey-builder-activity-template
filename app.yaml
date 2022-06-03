@@ -1,5 +1,5 @@
-runtime:custom
-env:flex
+runtime: custom
+env: flex
 
 #runtime: nodejs10
 env_variables:
