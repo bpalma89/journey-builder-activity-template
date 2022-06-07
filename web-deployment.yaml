@@ -1,13 +1,13 @@
 apiVersion: networking.k8s.io/v1
 kind: ingress
 metadata:
-  name: basic-ingress
+  name: journey-builder-application
 spec:
   tls:
     - secretName: jbc-tls
   defaultBackend:
     service:
-      name: web
+      name: journey-builder
       port:
-        number: 3000
+        number: 80
 ---
