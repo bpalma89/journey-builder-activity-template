@@ -1,93 +1,92 @@
-define([
-    'postmonger'
-], function (
-    Postmonger
-) {
-    'use strict';
+define(["postmonger"], function (Postmonger) {
+  "use strict";
 
-    var connection = new Postmonger.Session();
-    var authTokens = {};
-    var payload = {};
-    $(window).ready(onRender);
+  var connection = new Postmonger.Session();
+  var authTokens = {};
+  var payload = {};
+  $(window).ready(onRender);
 
-    connection.on('initActivity', initialize);
-    connection.on('requestedTokens', onGetTokens);
-    connection.on('requestedEndpoints', onGetEndpoints);
-    connection.on('requestedInteraction', onRequestedInteraction);
-    connection.on('requestedTriggerEventDefinition', onRequestedTriggerEventDefinition);
-    connection.on('requestedDataSources', onRequestedDataSources);
+  connection.on("initActivity", initialize);
+  connection.on("requestedTokens", onGetTokens);
+  connection.on("requestedEndpoints", onGetEndpoints);
+  connection.on("requestedInteraction", onRequestedInteraction);
+  connection.on(
+    "requestedTriggerEventDefinition",
+    onRequestedTriggerEventDefinition
+  );
+  connection.on("requestedDataSources", onRequestedDataSources);
 
-    connection.on('clickedNext', save);
-   
-    function onRender() {
-        // JB will respond the first time 'ready' is called with 'initActivity'
-        connection.trigger('ready');
+  connection.on("clickedNext", save);
 
-        connection.trigger('requestTokens');
-        connection.trigger('requestEndpoints');
-        connection.trigger('requestInteraction');
-        connection.trigger('requestTriggerEventDefinition');
-        connection.trigger('requestDataSources');  
+  function onRender() {
+    // JB will respond the first time 'ready' is called with 'initActivity'
+    connection.trigger("ready");
 
+    connection.trigger("requestTokens");
+    connection.trigger("requestEndpoints");
+    connection.trigger("requestInteraction");
+    connection.trigger("requestTriggerEventDefinition");
+    connection.trigger("requestDataSources");
+  }
+
+  function onRequestedDataSources(dataSources) {
+    console.log("*** requestedDataSources ***");
+    console.log(dataSources);
+  }
+
+  function onRequestedInteraction(interaction) {
+    console.log("*** requestedInteraction ***");
+    console.log(interaction);
+  }
+
+  function onRequestedTriggerEventDefinition(eventDefinitionModel) {
+    console.log("*** requestedTriggerEventDefinition ***");
+    console.log(eventDefinitionModel);
+  }
+
+  function initialize(data) {
+    /*console.log(data);
+    if (data) {
+      payload = data;
     }
 
-    function onRequestedDataSources(dataSources){
-        console.log('*** requestedDataSources ***');
-        console.log(dataSources);
-    }
+    var hasInArguments = Boolean(
+      payload["arguments"] &&
+        payload["arguments"].execute &&
+        payload["arguments"].execute.inArguments &&
+        payload["arguments"].execute.inArguments.length > 0
+    );
 
-    function onRequestedInteraction (interaction) {    
-        console.log('*** requestedInteraction ***');
-        console.log(interaction);
-     }
+    var inArguments = hasInArguments
+      ? payload["arguments"].execute.inArguments
+      : {};
 
-     function onRequestedTriggerEventDefinition(eventDefinitionModel) {
-        console.log('*** requestedTriggerEventDefinition ***');
-        console.log(eventDefinitionModel);
-    }
+    console.log(inArguments);
 
-    function initialize(data) {
-        console.log(data);
-        if (data) {
-            payload = data;
-        }
-        
-        var hasInArguments = Boolean(
-            payload['arguments'] &&
-            payload['arguments'].execute &&
-            payload['arguments'].execute.inArguments &&
-            payload['arguments'].execute.inArguments.length > 0
-        );
+    $.each(inArguments, function (index, inArgument) {
+      $.each(inArgument, function (key, val) {});
+    });
 
-        var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
+    connection.trigger("updateButton", {
+      button: "next",
+      text: "done",
+      visible: true,
+    });*/
 
-        console.log(inArguments);
+    console.log("Activity was initiated.");
+  }
 
-        $.each(inArguments, function (index, inArgument) {
-            $.each(inArgument, function (key, val) {
-                
-              
-            });
-        });
+  function onGetTokens(tokens) {
+    console.log(tokens);
+    authTokens = tokens;
+  }
 
-        connection.trigger('updateButton', {
-            button: 'next',
-            text: 'done',
-            visible: true
-        });
-    }
+  function onGetEndpoints(endpoints) {
+    console.log(endpoints);
+  }
 
-    function onGetTokens(tokens) {
-        console.log(tokens);
-        authTokens = tokens;
-    }
-
-    function onGetEndpoints(endpoints) {
-        console.log(endpoints);
-    }
-
-    function save() {
-        var postcardURLValue = $('#postcard-url').val();
+  function save() {
+    /*var postcardURLValue = $('#postcard-url').val();
         var postcardTextValue = $('#postcard-text').val();
 
         payload['arguments'].execute.inArguments = [{
@@ -97,8 +96,12 @@ define([
         payload['metaData'].isConfigured = true;
 
         console.log(payload);
-        connection.trigger('updateActivity', payload);
-    }
+        connection.trigger('updateActivity', payload);*/
 
-
+    //evento disparado quando se carrega no botão "Done" no Journey Builder
+    console.log("Next was clicked.");
+    var firstName = document.getElementById("fname").value();
+    var lastName = document.getElementById("lname").value();
+    console.log(firstName + " " + lastName);
+  }
 });
