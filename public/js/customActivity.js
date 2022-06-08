@@ -1,4 +1,4 @@
-/*define(["postmonger"], function (Postmonger) {
+define(["js/postmonger"], function (Postmonger) {
   "use strict";
 
   var connection = new Postmonger.Session();
@@ -72,8 +72,6 @@
       text: "done",
       visible: true,
     });
-
-    console.log("Activity was initiated.");
   }
 
   function onGetTokens(tokens) {
@@ -86,19 +84,17 @@
   }
 
   function save() {
-    var postcardURLValue = $("#postcard-url").val();
-    var postcardTextValue = $("#postcard-text").val();
+    /*var postcardURLValue = $('#postcard-url').val();
+        var postcardTextValue = $('#postcard-text').val();
 
-    payload["arguments"].execute.inArguments = [
-      {
-        tokens: authTokens,
-      },
-    ];
+        payload['arguments'].execute.inArguments = [{
+            "tokens": authTokens
+        }];
+        
+        payload['metaData'].isConfigured = true;
 
-    payload["metaData"].isConfigured = true;
-
-    console.log(payload);
-    connection.trigger("updateActivity", payload);
+        console.log(payload);
+        connection.trigger('updateActivity', payload);*/
 
     //evento disparado quando se carrega no botão "Done" no Journey Builder
     console.log("Next was clicked.");
@@ -106,21 +102,4 @@
     var lastName = document.getElementById("lname").value();
     console.log(firstName + " " + lastName);
   }
-});*/
-
-var connection = new Postmonger.Session();
-
-connection.trigger("ready");
-
-connection.on("initActivity", function (data) {
-  //evento disparado quando se carrega no botão "Done" no Journey Builder
-  console.log("Activity was initiated.");
-});
-
-connection.on("clickedNext", function (data) {
-  //evento disparado quando se carrega no botão "Done" no Journey Builder
-  console.log("Next was clicked.");
-  var firstName = document.getElementById("fname").value();
-  var lastName = document.getElementById("lname").value();
-  console.log(firstName + " " + lastName);
 });
