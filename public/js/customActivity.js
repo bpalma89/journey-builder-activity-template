@@ -15,8 +15,8 @@ define(["postmonger"], function (Postmonger) {
   connection.on("clickedNext", function (data) {
     //evento disparado quando se carrega no botão "Done" no Journey Builder
     console.log("Next was clicked.");
-    var firstName = document.getElementById("fname").value();
-    var lastName = document.getElementById("lname").value();
+    var firstName = document.getElementById("fname").value;
+    var lastName = document.getElementById("lname").value;
     console.log(firstName + " " + lastName);
   });
 });
