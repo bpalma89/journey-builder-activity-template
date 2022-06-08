@@ -45,7 +45,7 @@ define(["postmonger"], function (Postmonger) {
   }
 
   function initialize(data) {
-    /*console.log(data);
+    console.log(data);
     if (data) {
       payload = data;
     }
@@ -71,7 +71,7 @@ define(["postmonger"], function (Postmonger) {
       button: "next",
       text: "done",
       visible: true,
-    });*/
+    });
 
     console.log("Activity was initiated.");
   }
@@ -86,17 +86,19 @@ define(["postmonger"], function (Postmonger) {
   }
 
   function save() {
-    /*var postcardURLValue = $('#postcard-url').val();
-        var postcardTextValue = $('#postcard-text').val();
+    var postcardURLValue = $("#postcard-url").val();
+    var postcardTextValue = $("#postcard-text").val();
 
-        payload['arguments'].execute.inArguments = [{
-            "tokens": authTokens
-        }];
-        
-        payload['metaData'].isConfigured = true;
+    payload["arguments"].execute.inArguments = [
+      {
+        tokens: authTokens,
+      },
+    ];
 
-        console.log(payload);
-        connection.trigger('updateActivity', payload);*/
+    payload["metaData"].isConfigured = true;
+
+    console.log(payload);
+    connection.trigger("updateActivity", payload);
 
     //evento disparado quando se carrega no botão "Done" no Journey Builder
     console.log("Next was clicked.");
