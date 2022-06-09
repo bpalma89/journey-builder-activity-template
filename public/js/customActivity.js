@@ -18,5 +18,12 @@ define(["postmonger"], function (Postmonger) {
     var firstName = document.getElementById("fname").value();
     var lastName = document.getElementById("lname").value();
     console.log(firstName + " " + lastName);
+
+    var payload = {
+      first: firstName,
+      last: lastName,
+    };
+
+    connection.trigger("updateActivity", payload);
   });
 });
