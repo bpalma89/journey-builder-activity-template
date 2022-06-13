@@ -11,7 +11,6 @@ var activityUpdate = require('./activityUpdate');
  * GET home page.
  */
 exports.index = function(req, res){
-    console.log('App initiated');
     if( !req.session.token ) {
         res.render( 'index', {
             title: 'Unauthenticated',

@@ -1,5 +1,16 @@
 'use strict';
 var util = require('util');
+var connection = new Postmonger.Session();
+connection.trigger('ready');
+
+connection.on('initActivity',function(data){
+    document.getDocumentById('textarea').value = JSON.stringify(data,null,2)
+});
+
+connection.on('clickedNext', function (){
+    var.configuration = JSON.parse( document.getDocumentById('textarea').value);
+    connection.trigger('updateActivity', configuration);
+});
 
 // Deps
 const Path = require('path');
