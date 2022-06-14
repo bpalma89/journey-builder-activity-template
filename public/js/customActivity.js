@@ -31,6 +31,8 @@ define(["postmonger"], function (Postmonger) {
     var payload = { firstName: fname, lastName: lname };
     var jsonPayloadString = JSON.stringify(payload);
 
+    console.log(jsonPayloadString);
+
     connection.trigger("updateActivity", jsonPayloadString);
   });
 });
