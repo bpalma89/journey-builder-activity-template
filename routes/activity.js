@@ -28,7 +28,7 @@ function logData(req) {
     protocol: req.protocol,
     secure: req.secure,
     originalUrl: req.originalUrl,
-  });
+  });/*
   console.log("body: " + util.inspect(req.body));
   console.log("headers: " + req.headers);
   console.log("trailers: " + req.trailers);
@@ -45,7 +45,7 @@ function logData(req) {
   console.log("stale: " + req.stale);
   console.log("protocol: " + req.protocol);
   console.log("secure: " + req.secure);
-  console.log("originalUrl: " + req.originalUrl);
+  console.log("originalUrl: " + req.originalUrl);*/
 }
 
 /*
