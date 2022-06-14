@@ -1,104 +1,38 @@
-define([
-    'postmonger'
-], function (
-    Postmonger
-) {
-    'use strict';
+define(["postmonger"], function (Postmonger) {
+  "use strict";
+  // console.log(postmonger);
+  console.log(Postmonger);
 
-    var connection = new Postmonger.Session();
-    var authTokens = {};
+  var connection = new Postmonger.Session();
+  /*var pg = require(‘pg’);//postgresql
+  var connectionString = "postgres://postgres:postgres@gcp-mimetic-planet/34.77.138.158:5432/customactivity-db";
+  var pgClient = new pg.Client(connectionString);*/
+
+  connection.trigger("ready");
+
+  connection.on("initActivity", function (data) {
+    /*pgClient.connect();
+    var query = pgClient.query("SELECT * FROM public.perfis_clientes");
+    query.on("row", function(row,result){
+        result.addRow(row);
+        console.log(row);
+    });*/
+    //evento disparado quando se carrega no botão "Done" no Journey Builder
+    console.log("Activity was initiated.");
+  });
+
+  connection.on("clickedNext", function (data) {
+    //evento disparado quando se carrega no botão "Done" no Journey Builder
+    console.log("Next was clicked.");
+    var firstName = document.getElementById("fname").value;
+    var lastName = document.getElementById("lname").value;
+    console.log(firstName + " " + lastName);
+
     var payload = {};
-    $(window).ready(onRender);
+    payload.firstName = firstName;
+    payload.secondName = secondName;
+    var jsonPayloadString = JSON.stringify(payload);
 
-    connection.on('initActivity', initialize);
-    connection.on('requestedTokens', onGetTokens);
-    connection.on('requestedEndpoints', onGetEndpoints);
-    connection.on('requestedInteraction', onRequestedInteraction);
-    connection.on('requestedTriggerEventDefinition', onRequestedTriggerEventDefinition);
-    connection.on('requestedDataSources', onRequestedDataSources);
-
-    connection.on('clickedNext', save);
-   
-    function onRender() {
-        // JB will respond the first time 'ready' is called with 'initActivity'
-        connection.trigger('ready');
-
-        connection.trigger('requestTokens');
-        connection.trigger('requestEndpoints');
-        connection.trigger('requestInteraction');
-        connection.trigger('requestTriggerEventDefinition');
-        connection.trigger('requestDataSources');  
-
-    }
-
-    function onRequestedDataSources(dataSources){
-        console.log('*** requestedDataSources ***');
-        console.log(dataSources);
-    }
-
-    function onRequestedInteraction (interaction) {    
-        console.log('*** requestedInteraction ***');
-        console.log(interaction);
-     }
-
-     function onRequestedTriggerEventDefinition(eventDefinitionModel) {
-        console.log('*** requestedTriggerEventDefinition ***');
-        console.log(eventDefinitionModel);
-    }
-
-    function initialize(data) {
-        console.log(data);
-        if (data) {
-            payload = data;
-        }
-        
-        var hasInArguments = Boolean(
-            payload['arguments'] &&
-            payload['arguments'].execute &&
-            payload['arguments'].execute.inArguments &&
-            payload['arguments'].execute.inArguments.length > 0
-        );
-
-        var inArguments = hasInArguments ? payload['arguments'].execute.inArguments : {};
-
-        console.log(inArguments);
-
-        $.each(inArguments, function (index, inArgument) {
-            $.each(inArgument, function (key, val) {
-                
-              
-            });
-        });
-
-        connection.trigger('updateButton', {
-            button: 'next',
-            text: 'done',
-            visible: true
-        });
-    }
-
-    function onGetTokens(tokens) {
-        console.log(tokens);
-        authTokens = tokens;
-    }
-
-    function onGetEndpoints(endpoints) {
-        console.log(endpoints);
-    }
-
-    function save() {
-        var postcardURLValue = $('#postcard-url').val();
-        var postcardTextValue = $('#postcard-text').val();
-
-        payload['arguments'].execute.inArguments = [{
-            "tokens": authTokens
-        }];
-        
-        payload['metaData'].isConfigured = true;
-
-        console.log(payload);
-        connection.trigger('updateActivity', payload);
-    }
-
-
+    connection.trigger("updateActivity", jsonPayloadString);
+  });
 });
