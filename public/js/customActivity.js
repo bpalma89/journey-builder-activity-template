@@ -24,13 +24,11 @@ define(["postmonger"], function (Postmonger) {
   connection.on("clickedNext", function (data) {
     //evento disparado quando se carrega no botão "Done" no Journey Builder
     console.log("Next was clicked.");
-    var firstName = document.getElementById("fname").value;
-    var lastName = document.getElementById("lname").value;
-    console.log(firstName + " " + lastName);
+    var fname = document.getElementById("fname").value;
+    var lname = document.getElementById("lname").value;
+    console.log(fname + " " + lname);
 
-    var payload = {};
-    payload.firstName = firstName;
-    payload.secondName = secondName;
+    var payload = { firstName: fname, lastName: lname };
     var jsonPayloadString = JSON.stringify(payload);
 
     connection.trigger("updateActivity", jsonPayloadString);
