@@ -17,7 +17,7 @@
         "execute": {
            "inArguments":[],
           "outArguments": [],
-          "url": "https://custom-activty-mc-6mp2b2fumq-ew.a.run.app/execute",
+          "url": "https://palma-ca-test.herokuapp.com/execute",
            "verb": "POST",
             "body": "",
             "header": "",
@@ -29,22 +29,22 @@
     "configurationArguments": {
       "applicationExtensionKey" : "f40a0200-30a2-4786-bb2c-9f05e05762f3",
       "save": {
-        "url": "https://custom-activty-mc-6mp2b2fumq-ew.a.run.app/save",
+        "url": "https://palma-ca-test.herokuapp.com/save",
           "verb": "POST",
         "useJwt": true
        },
        "publish": {
-        "url": "https://custom-activty-mc-6mp2b2fumq-ew.a.run.app/publish",
+        "url": "https://palma-ca-test.herokuapp.com/publish",
            "verb": "POST",
         "useJwt": true
        },
       "stop": {
-        "url": "https://custom-activty-mc-6mp2b2fumq-ew.a.run.app/stop",
+        "url": "https://palma-ca-test.herokuapp.com/stop",
            "verb": "POST",
         "useJwt": true
       },
       "validate": {
-        "url": "https://custom-activty-mc-6mp2b2fumq-ew.a.run.app/validate",
+        "url": "https://palma-ca-test.herokuapp.com/validate",
         "verb": "POST",
         "useJwt": true
       }
